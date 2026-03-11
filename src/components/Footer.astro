@@ -1,0 +1,159 @@
+---
+
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <img src="/logo-negro.png" alt="Finca Esmeralda" class="footer-logo" />
+        <p class="footer-description">
+          Un lugar especial donde la tradición y la naturaleza se encuentran.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Navegación</h3>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <ul class="footer-contact">
+          <li>📍 Tu dirección aquí</li>
+          <li>📞 +54 XXX XXX XXXX</li>
+          <li>✉️ contacto@fincaesmeralda.com</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="WhatsApp">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Finca Esmeralda. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .footer-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cccccc;
+  }
+
+  .footer-links,
+  .footer-contact {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    color: white;
+    transform: translateX(5px);
+    display: inline-block;
+  }
+
+  .footer-contact li {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .social-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: white;
+    transform: translateX(5px);
+    display: inline-block;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: #999;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      height: 60px;
+    }
+  }
+</style>

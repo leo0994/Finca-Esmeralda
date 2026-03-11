@@ -5,25 +5,8 @@
 <section id="galeria" class="galeria">
   <div class="container">
     <h2>Galería</h2>
-    <div class="grid">
-      <div class="gallery-item">
-        <img src="/placeholder1.jpg" alt="Imagen 1" />
-      </div>
-      <div class="gallery-item">
-        <img src="/placeholder2.jpg" alt="Imagen 2" />
-      </div>
-      <div class="gallery-item">
-        <img src="/placeholder3.jpg" alt="Imagen 3" />
-      </div>
-      <div class="gallery-item">
-        <img src="/placeholder4.jpg" alt="Imagen 4" />
-      </div>
-      <div class="gallery-item">
-        <img src="/placeholder5.jpg" alt="Imagen 5" />
-      </div>
-      <div class="gallery-item">
-        <img src="/placeholder6.jpg" alt="Imagen 6" />
-      </div>
+    <div class="grid" id="galleryGrid">
+      <p class="gallery-loading">Cargando galería...</p>
     </div>
   </div>
 </section>
@@ -42,7 +25,7 @@
   }
 
   .container {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
   }
@@ -69,11 +52,19 @@
     border-radius: 2px;
   }
 
+  .gallery-loading {
+    text-align: center;
+    color: #cccccc;
+    padding: 3rem;
+    font-size: 1.2rem;
+    grid-column: 1 / -1;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
@@ -87,9 +78,126 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+
+  .placeholder {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #444;
+  }
+
+  .placeholder-text {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .gallery-empty {
+    text-align: center;
+    color: #999;
+    padding: 3rem;
+    grid-column: 1 / -1;
+  }
+
+  .gallery-empty p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .galeria {
+      padding: 4rem 1.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  async function loadGallery() {
+    const grid = document.getElementById("galleryGrid");
+
+    try {
+      const response = await fetch("/api/gallery/list");
+      const data = await response.json();
+
+      if (!grid) return;
+
+      if (data.photos.length === 0) {
+        grid.innerHTML = `
+          <div class="gallery-empty">
+            <p>No hay fotos en la galería todavía</p>
+            <p style="font-size: 0.9rem; color: #666;">Las fotos aparecerán aquí cuando se suban desde el panel de administración</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = data.photos
+        .map(
+          (photo: string) => `
+        <div class="gallery-item">
+          <img src="${photo}" alt="Foto de galería" loading="lazy">
+        </div>
+      `,
+        )
+        .join("");
+    } catch (error) {
+      console.error("Error loading gallery:", error);
+      if (grid) {
+        grid.innerHTML = `
+          <p class="gallery-loading" style="color: #ff6b6b;">Error al cargar la galería</p>
+        `;
+      }
+    }
+  }
+
+  // Load gallery on page load
+  document.addEventListener("DOMContentLoaded", loadGallery);
+</script>
+
+<style>
+  .gallery-item.placeholder {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #444;
+  }
+
+  .placeholder-text {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
   .gallery-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(5, 150, 105, 0.4);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
   }
 
   .gallery-item img {
