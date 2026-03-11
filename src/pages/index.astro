@@ -1,0 +1,96 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import SobreNosotros from "../components/SobreNosotros.astro";
+import Galeria from "../components/Galeria.astro";
+import Contacto from "../components/Contacto.astro";
+
+const pageTitle = "Finca Esmeralda";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>Bienvenido a Finca Esmeralda</h1>
+        <p>
+          Un lugar especial donde la tradición y la naturaleza se encuentran
+        </p>
+      </div>
+    </section>
+
+    <SobreNosotros />
+    <Galeria />
+    <Contacto />
+  </body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 80px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-overlay);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-text-light);
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: var(--shadow-text);
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-shadow: var(--shadow-text-sm);
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+  }
+</style>

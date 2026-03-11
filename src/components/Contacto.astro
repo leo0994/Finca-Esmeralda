@@ -1,0 +1,154 @@
+---
+
+---
+
+<section id="contacto" class="contacto">
+  <div class="container">
+    <h2>Contacto</h2>
+    <div class="content">
+      <div class="info">
+        <div class="info-item">
+          <h3>📍 Dirección</h3>
+          <p>Tu dirección aquí</p>
+        </div>
+        <div class="info-item">
+          <h3>📞 Teléfono</h3>
+          <p>+54 XXX XXX XXXX</p>
+        </div>
+        <div class="info-item">
+          <h3>✉️ Email</h3>
+          <p>contacto@fincaesmeralda.com</p>
+        </div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .info-item p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .btn-submit {
+    padding: 1rem 2rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: #047857;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .contacto {
+      padding: 4rem 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Fuente principal */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Colores */
+  --color-primary: #059669;
+  --color-text-light: #ffffff;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Sombras */
+  --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  --shadow-text-sm: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+html {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('/fondo de pantalla.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: var(--font-family);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 700;
+}
+
+p {
+  font-family: var(--font-family);
+  font-weight: 400;
+}

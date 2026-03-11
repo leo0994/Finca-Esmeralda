@@ -1,0 +1,190 @@
+---
+
+---
+
+<header class="header">
+  <nav class="nav-container">
+    <a href="#inicio" class="logo">
+      <img src="/logo.png" alt="Finca Esmeralda Logo" />
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 120px;
+    width: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .logo:hover img {
+    transform: scale(1.05);
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-menu a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  .nav-menu a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-menu a:hover::after {
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: #000000;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 0 1.5rem;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 100px;
+      right: -100%;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      width: 70%;
+      height: calc(100vh - 100px);
+      transition: right 0.3s ease;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      font-size: 1.5rem;
+      text-shadow: none;
+    }
+
+    .nav-menu.active {
+      right: 0;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .nav-container {
+      padding: 0 4rem;
+    }
+
+    .logo img {
+      height: 150px;
+    }
+
+    .nav-menu a {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  menuToggle?.addEventListener("click", () => {
+    navMenu?.classList.toggle("active");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu?.classList.remove("active");
+    });
+  });
+
+  // Scroll suave
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(
+        this.getAttribute("href") as string,
+      );
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+</script>
