@@ -35,6 +35,9 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   font-family: var(--font-family);
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
